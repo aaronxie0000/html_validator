@@ -27,7 +27,6 @@ def validate_html(html):
     if html == '':
         return True
     text = _extract_tags(html)
-    print(text)
     if len(text) == 0:
         return False
     checked = []
@@ -37,8 +36,6 @@ def validate_html(html):
         else:
             if len(checked) == 0:
                 return False
-            print(list(checked[-1])[1:])
-            print(list(char)[2:])
             if list(checked[-1])[1:] == list(char)[2:]:
                 checked.pop()
             else:
@@ -60,5 +57,5 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>', '</strong>']
     '''
-    x = re.findall("<([^\s>]+)",  html)
+    x = re.findall("<([^ >]+)",  html)
     return list(map((lambda word: "<" + word + ">"), x))
