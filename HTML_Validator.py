@@ -57,5 +57,5 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>', '</strong>']
     '''
-    x = re.findall("<([^ >]+)",  html)
+    x = re.findall("<([^ >]+)", html)
     return list(map((lambda word: "<" + word + ">"), x))
